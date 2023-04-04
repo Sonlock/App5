@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>App con iconos</title>
+  </head>
+  <body>
+    <div id="iconos">
+      <a href="#" onclick="cargarPagina('pagina1.html')">Icono 1</a>
+      <a href="#" onclick="cargarPagina('pagina2.html')">Icono 2</a>
+      <a href="#" onclick="cargarPagina('pagina3.html')">Icono 3</a>
+    </div>
+    <div id="contenido">
+      <!-- Aquí se cargará el contenido de las páginas -->
+    </div>
+    <script>
+      function cargarPagina(pagina) {
+        // Creamos una instancia del objeto XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+
+        // Configuramos la petición
+        xhr.open('GET', pagina);
+
+        // Definimos el callback que se llamará cuando la petición termine
+        xhr.onload = function() {
+          // Si la petición fue exitosa, cargamos el contenido de la página
+          if (xhr.status === 200) {
+            document.getElementById('contenido').innerHTML = xhr.responseText;
+          }
+        };
+
+        // Enviamos la petición
+        xhr.send();
+      }
+    </script>
+  </body>
+</html>
